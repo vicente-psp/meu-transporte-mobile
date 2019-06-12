@@ -1,4 +1,4 @@
-package com.example.androidretrofit2.interfaces;
+package com.example.meu_transporte_mobile.interfaces;
 
 import java.util.List;
 
