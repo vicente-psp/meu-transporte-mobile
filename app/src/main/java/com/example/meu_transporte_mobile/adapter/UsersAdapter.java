@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.androidretrofit2.R;
 import com.example.androidretrofit2.model.Users;
+import com.example.meu_transporte_mobile.model.Users;
 
 import java.util.ArrayList;
 import java.util.List;
