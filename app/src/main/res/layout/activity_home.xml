@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="show"
-            android:text="@string/btn_text_driver" />
+            android:text="@string/btn_text_driver"/>
         <Button
             android:id="@+id/btnTruck"
             android:layout_width="match_parent"

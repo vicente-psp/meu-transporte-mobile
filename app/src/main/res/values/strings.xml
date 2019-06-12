@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">meu-transporte-mobile</string>
+    <string name="app_name">Meu Transporte</string>
     <string name="btn_text_driver">Driver</string>
     <string name="btn_text_truck">Truck</string>
     <string name="btn_text_orders">Order</string>
