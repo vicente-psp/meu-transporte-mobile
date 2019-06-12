@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">meu-transporte-mobile</string>
+    <string name="btn_text_driver">Driver</string>
+    <string name="btn_text_truck">Truck</string>
+    <string name="btn_text_orders">Order</string>
+    <string name="btn_text_client">Client</string>
+    <string name="btn_text_route">Route</string>
+    <string name="btn_text_maps">Maps</string>
+    <string name="hint_txt_id">Enter id</string>
+    <string name="hint_txt_username">Enter username</string>
+    <string name="hint_txt_phone">Enter your phone</string>
+    <string name="btn_txt_userAdd">Adicionar</string>
 </resources>

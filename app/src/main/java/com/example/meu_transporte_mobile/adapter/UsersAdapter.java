@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.androidretrofit2.R;
-import com.example.androidretrofit2.model.Users;
+import com.example.meu_transporte_mobile.R;
 import com.example.meu_transporte_mobile.model.Users;
 
 import java.util.ArrayList;
