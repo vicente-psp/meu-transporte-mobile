@@ -2,6 +2,7 @@ package com.example.meu_transporte_mobile.maps;
 
 import android.os.AsyncTask;
 
+import com.example.meu_transporte_mobile.model.Order;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -40,8 +41,14 @@ public class DirectionFinder {
     }
 
     private String createUrl() throws UnsupportedEncodingException {
-        String urlOrigin = URLEncoder.encode(origin, "utf-8");
-        String urlDestination = URLEncoder.encode(destination, "utf-8");
+
+        Order order = new Order();
+
+        order.setStartAddress("Rua agenor lopes cansado filho, Aparecida de Goiânia");
+        order.setEndAddress("Avenida 136, Goiânia");
+
+        String urlOrigin = order.getStartAddress(); //URLEncoder.encode(origin, "utf-8");
+        String urlDestination = order.getEndAddress();//URLEncoder.encode(destination, "utf-8");
         String urlPonto = "via: Terminal Bandeiras Goiânia | via: Terminal Isidória Goiânia";
 
         return DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&waypoints=" + urlPonto + "&key=" + GOOGLE_API_KEY;

@@ -28,6 +28,13 @@ public class HomeActivity extends AppCompatActivity {
 
                 break;
 
+            case R.id.btnClient:
+
+                Intent intent2 = new Intent(this, ClientActivity.class);
+                startActivity(intent2);
+
+                break;
+
             case R.id.btnMaps:
 
                 Intent intentMaps = new Intent(this, MapsActivity.class);

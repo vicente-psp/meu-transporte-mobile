@@ -12,11 +12,13 @@ public class Client {
     private String name;
     private String cnpj;
     private String socialName;
+    private Address address;
     @Builder
     public Client(){
         this.idClient = idClient;
         this.name = name;
         this.cnpj = cnpj;
         this.socialName = socialName;
+        this.address = address;
     }
 }

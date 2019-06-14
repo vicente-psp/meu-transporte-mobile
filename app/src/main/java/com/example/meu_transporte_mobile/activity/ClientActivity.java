@@ -1,23 +1,20 @@
 package com.example.meu_transporte_mobile.activity;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.view.ContextMenu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.meu_transporte_mobile.R;
+import com.example.meu_transporte_mobile.adapter.ClientAdapter;
 import com.example.meu_transporte_mobile.adapter.UsersAdapter;
 import com.example.meu_transporte_mobile.bootstrap.APIClient;
-import com.example.meu_transporte_mobile.model.Users;
-import com.example.meu_transporte_mobile.resource.UsersResource;
+import com.example.meu_transporte_mobile.model.Client;
+import com.example.meu_transporte_mobile.resource.ClientResource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,97 +23,99 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UsersActivity extends AppCompatActivity {
+import static java.lang.Long.valueOf;
 
-    UsersResource apiUserResourse;
+public class ClientActivity extends AppCompatActivity {
+
+    ClientResource apiUserResourse;
 
     private String username;
     private String extra;
-    private Integer id;
+    private Integer idClient;
 
     EditText txtId;
-    EditText txtUserName;
+    EditText txtName;
     EditText txtExtra;
 
     ListView listViewUsers;
-    ArrayList<Users> listUsers = new ArrayList<Users>();
+    ArrayList<Client> listClient = new ArrayList<Client>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        apiUserResourse = APIClient.getClient().create(UsersResource.class);
+        apiUserResourse = APIClient.getClient().create(ClientResource.class);
 
-        Call<List<Users>> get = apiUserResourse.get();
+        Call<List<Client>> get = apiUserResourse.get();
 
-        get.enqueue(new Callback<List<Users>>() {
+        get.enqueue(new Callback<List<Client>>() {
 
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
-            public void onResponse(Call<List<Users>> call, Response<List<Users>> response) {
+            public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
                 listViewUsers = findViewById(R.id.listViewUser);
-                listUsers = (ArrayList<Users>) response.body();
-                listViewUsers.setAdapter(new UsersAdapter(getApplicationContext(), listUsers));
+                listClient = (ArrayList<Client>) response.body();
+                listViewUsers.setAdapter(new ClientAdapter(getApplicationContext(), listClient));
                 registerForContextMenu(listViewUsers);
             }
 
             @Override
-            public void onFailure(Call<List<Users>> call, Throwable t) {
+            public void onFailure(Call<List<Client>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
 
-    private boolean existeId(ArrayList<Users> users, int id) {
-        for (Users user : users) {
-            if (user.getId() == id)
+    private boolean existeId(ArrayList<Client> clients, int id) {
+        for (Client client : clients) {
+            if (client.getIdClient() == id)
                 return true;
         }
         return false;
     }
 
-    public void userAdd(View view) {
+    public void clientAdd(View view) {
 
         txtId = findViewById(R.id.txtId);
-        txtUserName = findViewById(R.id.txtName);
+        txtName = findViewById(R.id.txtName);
         txtExtra = findViewById(R.id.txtExtra);
 
 
-        id = Integer.parseInt(txtId.getText().toString());
-        username = txtUserName.getText().toString();
+        idClient = Integer.parseInt(txtId.getText().toString());
+        username = txtName.getText().toString();
         extra = txtExtra.getText().toString();
 
-        final Users user = new Users();
-        user.setId(id);
-        user.setName(username);
-        user.setPhone(extra);
+        final Client client = new Client();
+        client.setIdClient(valueOf(idClient));
+        client.setName(username);
+        client.setCnpj(extra);
 
-        Call<Users> post = apiUserResourse.post(user);
-        post.enqueue(new Callback<Users>() {
+        Call<Client> post = apiUserResourse.post(client);
+        post.enqueue(new Callback<Client>() {
             @Override
-            public void onResponse(Call<Users> call, Response<Users> response) {
-                Users u = response.body();
+            public void onResponse(Call<Client> call, Response<Client> response) {
+                Client u = response.body();
                 listViewUsers = findViewById(R.id.listViewUser);
 
-                if (existeId(listUsers, id)) {
+                if (existeId(listClient, idClient)) {
                     Toast.makeText(getApplicationContext(), "PESSOA JÁ EXISTE", Toast.LENGTH_LONG).show();
                     txtExtra.setText("");
                     txtId.setText("");
-                    txtUserName.setText("");
+                    txtName.setText("");
                 } else {
 
-                    listUsers.add(user);
+                    listClient.add(client);
 
-                    listViewUsers.setAdapter(new UsersAdapter(getApplicationContext(), listUsers));
+                    listViewUsers.setAdapter(new ClientAdapter(getApplicationContext(), listClient));
 
                 }
 
             }
 
             @Override
-            public void onFailure(Call<Users> call, Throwable t) {
+            public void onFailure(Call<Client> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),
                         t.getMessage(),
                         Toast.LENGTH_LONG).show();
