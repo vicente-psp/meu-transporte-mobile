@@ -125,35 +125,34 @@ public class UsersActivity extends AppCompatActivity {
         });
 
     }
-}
-//
+
 //    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        MenuItem deletar = menu.add("Delete");
-//        deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-//                Users user = (Users) listViewUsers.getItemAtPosition(info.position);
-//                Call<Void> delete = apiUserResourse.delete(user.getId());
-//                delete.enqueue(new Callback<Void>() {
-//                   @Override
-//                   public void onResponse(Call<Void> call, Response<Void> response) {
-//                       apiUserResourse.delete(user.getId());
-//                       Intent intent = new Intent(listViewUsers.getContext(),listUsers.getClass());
-//                       startActivity(intent);
-//                   }
-//
-//                   @Override
-//                   public void onFailure(Call<Void> call, Throwable t) {
-//
-//                   }
-//               });
-//                return false;
-//            }
-//        });
-//    }
-//}
+////    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+////        MenuItem deletar = menu.add("Delete");
+////        deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+////            @Override
+////            public boolean onMenuItemClick(MenuItem item) {
+////                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+////                Users user = (Users) listViewUsers.getItemAtPosition(info.position);
+////                Call<Void> delete = apiUserResourse.delete(user.getId());
+////                delete.enqueue(new Callback<Void>() {
+////                   @Override
+////                   public void onResponse(Call<Void> call, Response<Void> response) {
+////                       apiUserResourse.delete(user.getId());
+////                       Intent intent = new Intent(listViewUsers.getContext(),listUsers.getClass());
+////                       startActivity(intent);
+////                   }
+////
+////                   @Override
+////                   public void onFailure(Call<Void> call, Throwable t) {
+////
+////                   }
+////               });
+////                return false;
+////            }
+////        });
+////    }
+}
 
 
 

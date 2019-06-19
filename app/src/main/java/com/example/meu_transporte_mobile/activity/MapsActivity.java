@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener {
 
     private static final String TAG = "MapsActivity";

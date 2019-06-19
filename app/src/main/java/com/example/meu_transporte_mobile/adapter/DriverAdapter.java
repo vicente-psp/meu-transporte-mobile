@@ -16,7 +16,7 @@ import java.util.List;
 
 public class DriverAdapter extends BaseAdapter {
     private Context context;
-    private List<Driver> listDriver = new ArrayList<>();
+    private List<Driver> listDriver = new ArrayList<Driver>();
 
     public DriverAdapter(final Context applicationContext, final List<Driver> listDriver){
         this.context = applicationContext;
@@ -57,17 +57,17 @@ public class DriverAdapter extends BaseAdapter {
         Driver driver = parsetItem(position);
 
 
-        TextView txtId, txtName,txtExtra;
+        TextView txtId, txtName,txtPhone;
 
 
 
-        txtId = layout.findViewById(R.id.txtId);
+        txtId = layout.findViewById(R.id.txtIdUser);
         txtName = layout.findViewById(R.id.txtName);
-        txtExtra = layout.findViewById(R.id.txtExtra);
+        txtPhone = layout.findViewById(R.id.txtPhone);
 
-        txtId.setText(String.valueOf(driver.getIdDriver()));
+        txtId.setText(String.valueOf(driver.getIdUser()));
         txtName.setText(driver.getName());
-        txtExtra.setText(driver.getCpf());
+        txtPhone.setText(driver.getPhone());
 
 
         return layout;

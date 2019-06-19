@@ -62,8 +62,8 @@ public class UsersAdapter extends BaseAdapter {
 
 
         txtId = layout.findViewById(R.id.txtId);
-        txtUserName = layout.findViewById(R.id.txtUserName);
-        txtPhone = layout.findViewById(R.id.txtPhone);
+        txtUserName = layout.findViewById(R.id.txtName);
+        txtPhone = layout.findViewById(R.id.txtExtra);
 
         txtId.setText(String.valueOf(users.getId()));
         txtUserName.setText(users.getName());

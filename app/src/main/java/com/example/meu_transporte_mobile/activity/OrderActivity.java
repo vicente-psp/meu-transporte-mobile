@@ -24,9 +24,9 @@ import retrofit2.Response;
 
 import static java.lang.Long.valueOf;
 
-public class ClientActivity extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity {
 
-    ClientResource apiClientResourse;
+    ClientResource apiUserResourse;
 
     private String username;
     private String extra;
@@ -36,7 +36,7 @@ public class ClientActivity extends AppCompatActivity {
     EditText txtName;
     EditText txtExtra;
 
-    ListView listViewClient;
+    ListView listViewUsers;
     ArrayList<Client> listClient = new ArrayList<Client>();
 
     @Override
@@ -44,19 +44,19 @@ public class ClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        apiClientResourse = APIClient.getClient().create(ClientResource.class);
+        apiUserResourse = APIClient.getClient().create(ClientResource.class);
 
-        Call<List<Client>> get = apiClientResourse.get();
+        Call<List<Client>> get = apiUserResourse.get();
 
         get.enqueue(new Callback<List<Client>>() {
 
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
-                listViewClient = findViewById(R.id.listViewUser);
+                listViewUsers = findViewById(R.id.listViewUser);
                 listClient = (ArrayList<Client>) response.body();
-                listViewClient.setAdapter(new ClientAdapter(getApplicationContext(), listClient));
-                registerForContextMenu(listViewClient);
+                listViewUsers.setAdapter(new ClientAdapter(getApplicationContext(), listClient));
+                registerForContextMenu(listViewUsers);
             }
 
             @Override
@@ -91,12 +91,12 @@ public class ClientActivity extends AppCompatActivity {
         client.setName(username);
         client.setCnpj(extra);
 
-        Call<Client> post = apiClientResourse.post(client);
+        Call<Client> post = apiUserResourse.post(client);
         post.enqueue(new Callback<Client>() {
             @Override
             public void onResponse(Call<Client> call, Response<Client> response) {
                 Client u = response.body();
-                listViewClient = findViewById(R.id.listViewClient);
+                listViewUsers = findViewById(R.id.listViewUser);
 
                 if (existeId(listClient, idClient)) {
                     Toast.makeText(getApplicationContext(), "PESSOA JÁ EXISTE", Toast.LENGTH_LONG).show();
@@ -107,7 +107,7 @@ public class ClientActivity extends AppCompatActivity {
 
                     listClient.add(client);
 
-                    listViewClient.setAdapter(new ClientAdapter(getApplicationContext(), listClient));
+                    listViewUsers.setAdapter(new ClientAdapter(getApplicationContext(), listClient));
 
                 }
 

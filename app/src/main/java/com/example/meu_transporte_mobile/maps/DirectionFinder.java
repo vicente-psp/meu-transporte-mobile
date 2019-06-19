@@ -1,8 +1,8 @@
 package com.example.meu_transporte_mobile.maps;
 
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
 
-import com.example.meu_transporte_mobile.model.Order;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -21,6 +21,9 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Mai Thanh Hiep on 4/3/2016.
+ */
 public class DirectionFinder {
     private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
     private static final String GOOGLE_API_KEY = "AIzaSyCTLEBiBN9ewUL6-g3yhrBC7DgKkzzkBB0";
@@ -41,21 +44,15 @@ public class DirectionFinder {
     }
 
     private String createUrl() throws UnsupportedEncodingException {
-
-        Order order = new Order();
-
-        order.setStartAddress("Rua agenor lopes cansado filho, Aparecida de Goiânia");
-        order.setEndAddress("Avenida 136, Goiânia");
-
-        String urlOrigin = order.getStartAddress(); //URLEncoder.encode(origin, "utf-8");
-        String urlDestination = order.getEndAddress();//URLEncoder.encode(destination, "utf-8");
+        String urlOrigin = URLEncoder.encode(origin, "utf-8");
+        String urlDestination = URLEncoder.encode(destination, "utf-8");
         String urlPonto = "via: Terminal Bandeiras Goiânia | via: Terminal Isidória Goiânia";
 
         return DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&waypoints=" + urlPonto + "&key=" + GOOGLE_API_KEY;
 
     }
 
-        private class DownloadRawData extends AsyncTask<String, Void, String> {
+    private class DownloadRawData extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
@@ -161,3 +158,4 @@ public class DirectionFinder {
         return decoded;
     }
 }
+

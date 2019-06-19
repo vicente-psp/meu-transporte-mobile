@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.meu_transporte_mobile.R;
+import com.example.meu_transporte_mobile.model.Driver;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -23,8 +25,8 @@ public class HomeActivity extends AppCompatActivity {
 
             case R.id.btnDrivers:
 
-                Intent intent = new Intent(this, UsersActivity.class);
-                startActivity(intent);
+                Intent intentDrivers = new Intent(this, DriverActivity.class);
+                startActivity(intentDrivers);
 
                 break;
 

@@ -10,7 +10,7 @@ public class APIClient {
 
     private static Retrofit retrofit = null;
     //DOMINIO+CONTEXTO
-    public static final String ENDPOINT = "https://jsonplaceholder.typicode.com/";
+    public static final String ENDPOINT = "http://meu-transporte.us-east-2.elasticbeanstalk.com/";
 
     public static Retrofit getClient() {
 
